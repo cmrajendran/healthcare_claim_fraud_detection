@@ -52,7 +52,7 @@ def preprocess_data(df):
 
     return df
 
-@st.cache_Data
+@st.cache_data
 def load_data():
     # Read the CSV file from GitHub
     url = 'https://raw.githubusercontent.com/cmrajendran/healthcare_claim_fraud_detection/main/Healthcare%20Providers.csv'
@@ -105,11 +105,7 @@ def main():
     # Predict anomalies in the testing data
     anomalies = iforest.predict(X_test)
 
-    # Display the DataFrame
-    st.dataframe(df)
-
-    # Display model prediction
-    st.write("Anomalies detected in testing data:", anomalies)
+    
 
     # Input submission
     if st.button("Submit"):
