@@ -8,7 +8,7 @@ from sklearn.ensemble import IsolationForest
 
 st.title('Health Claim Fraud Predictor')
 
-@st.cache
+@st.cache_data
 def preprocess_data(df):
     # Drop unnecessary columns
     DropCols = ['index', 'National Provider Identifier',
@@ -52,11 +52,14 @@ def preprocess_data(df):
 
     return df
 
-@st.cache
+@st.cache_Data
 def load_data():
     # Read the CSV file from GitHub
     url = 'https://raw.githubusercontent.com/cmrajendran/healthcare_claim_fraud_detection/main/Healthcare%20Providers.csv'
     df = pd.read_csv(url)
+
+    # Sample approximately 30% of the dataset
+    df = df.sample(frac=0.3, random_state=42)
     
     # Preprocess the data
     df = preprocess_data(df)
