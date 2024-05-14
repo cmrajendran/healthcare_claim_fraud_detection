@@ -57,7 +57,8 @@ def preprocess_data(df):
 
 def load_data():
     # Read the CSV file
-    df = pd.read_csv("/Users/cmohan/PycharmProjects/Assignment/pythonProject/Data/Healthcare Providers.csv")
+    url = 'https://raw.githubusercontent.com/cmrajendran/healthcare_claim_fraud_detection/main/Healthcare%20Providers.csv'
+    df = pd.read_csv(url)
 
     # Preprocess the data
     df = preprocess_data(df)
