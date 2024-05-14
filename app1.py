@@ -8,9 +8,7 @@ from sklearn.ensemble import IsolationForest
 
 st.title('Health Claim Fraud Predictor')
 
-st.write('''This app predicts potential healthcare fraud, if the the claim is suspected to be
-fraudulent, user can raise the claim for further investigation.''')
-
+@st.cache
 def preprocess_data(df):
     # Drop unnecessary columns
     DropCols = ['index', 'National Provider Identifier',
@@ -54,17 +52,16 @@ def preprocess_data(df):
 
     return df
 
-
+@st.cache
 def load_data():
-    # Read the CSV file
+    # Read the CSV file from GitHub
     url = 'https://raw.githubusercontent.com/cmrajendran/healthcare_claim_fraud_detection/main/Healthcare%20Providers.csv'
     df = pd.read_csv(url)
-
+    
     # Preprocess the data
     df = preprocess_data(df)
-
+    
     return df
-
 
 def main():
     # Load the data
@@ -76,16 +73,14 @@ def main():
     entity_type_provider = st.selectbox("Entity Type of the Provider", df['Entity Type of the Provider'].unique())
     state_code_provider = st.selectbox("State Code of the Provider", df['State Code of the Provider'].unique())
     provider_type = st.selectbox("Provider Type", df['Provider Type'].unique())
-    medicare_participation_indicator = st.selectbox("Medicare Participation Indicator",
-                                                    df['Medicare Participation Indicator'].unique())
+    medicare_participation_indicator = st.selectbox("Medicare Participation Indicator", df['Medicare Participation Indicator'].unique())
     place_of_service = st.selectbox("Place of Service", df['Place of Service'].unique())
     hcpcs_drug_indicator = st.selectbox("HCPCS Drug Indicator", df['HCPCS Drug Indicator'].unique())
 
     # Numeric input variables
     number_of_services = st.number_input("Number of Services", min_value=0.0)
     number_of_medicare_beneficiaries = st.number_input("Number of Medicare Beneficiaries", min_value=0)
-    number_of_distinct_medicare_beneficiary_per_day_services = st.number_input(
-        "Number of Distinct Medicare Beneficiary/Per Day Services", min_value=0)
+    number_of_distinct_medicare_beneficiary_per_day_services = st.number_input("Number of Distinct Medicare Beneficiary/Per Day Services", min_value=0)
     average_medicare_allowed_amount = st.number_input("Average Medicare Allowed Amount", min_value=0.0)
     average_submitted_charge_amount = st.number_input("Average Submitted Charge Amount", min_value=0.0)
     average_medicare_payment_amount = st.number_input("Average Medicare Payment Amount", min_value=0.0)
@@ -107,9 +102,11 @@ def main():
     # Predict anomalies in the testing data
     anomalies = iforest.predict(X_test)
 
+    # Display the DataFrame
+    st.dataframe(df)
 
     # Display model prediction
-    #st.write("Anomalies detected in testing data:", anomalies)
+    st.write("Anomalies detected in testing data:", anomalies)
 
     # Input submission
     if st.button("Submit"):
@@ -117,8 +114,7 @@ def main():
         user_input_df = pd.DataFrame({
             'Number of Services': [number_of_services],
             'Number of Medicare Beneficiaries': [number_of_medicare_beneficiaries],
-            'Number of Distinct Medicare Beneficiary/Per Day Services': [
-                number_of_distinct_medicare_beneficiary_per_day_services],
+            'Number of Distinct Medicare Beneficiary/Per Day Services': [number_of_distinct_medicare_beneficiary_per_day_services],
             'Average Medicare Allowed Amount': [average_medicare_allowed_amount],
             'Average Submitted Charge Amount': [average_submitted_charge_amount],
             'Average Medicare Payment Amount': [average_medicare_payment_amount],
@@ -129,25 +125,25 @@ def main():
         # Ensure user input has the same features as training data
         for col in categorical_columns:
             user_input_df[col] = 0
-
+        
         # Perform one-hot encoding on the user input DataFrame
         user_input_encoded = pd.get_dummies(user_input_df, columns=categorical_columns)
-
+        
         # Ensure user input DataFrame has the same columns as training data
         user_input_encoded = user_input_encoded.reindex(columns=X_train.columns, fill_value=0)
 
         # Predict anomaly for user input
         user_anomaly = iforest.predict(user_input_encoded)
-        # Label 1 (normal samples) as 0 and -1 (anomalous samples) as 1 in the prediction results
+
+        # Interpret prediction results
         user_anomaly[user_anomaly == 1] = 0
         user_anomaly[user_anomaly == -1] = 1
 
-        # Interpret prediction results
+        # Display prediction result
         if user_anomaly == 0:
             st.write("Prediction: No Suspected Fraud")
         else:
             st.write("Prediction: Suspected Fraud. Please investigate.")
-
 
 if __name__ == "__main__":
     main()
