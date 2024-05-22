@@ -14,21 +14,21 @@ Please fill out the details below to get started.
 """)
 # Add a relevant title image using HTML for full-width display
 st.markdown(
-    """
+    
     <style>
     .title-image {
         width: 100%;
         height: auto;
     }
     </style>
-    """,
+    ,
     unsafe_allow_html=True
 )
 
 st.markdown(
-    """
+    
     <a href="https://imgbb.com/"><img src="https://i.ibb.co/Xj3ryjM/Untitled-design.jpg" alt="Untitled-design" border="0"></a>
-    """,
+    ,
     unsafe_allow_html=True
 
 @st.cache_data
