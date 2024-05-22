@@ -12,7 +12,6 @@ st.markdown("""
 Welcome to the Health Claim Fraud Predictor! This tool helps in identifying potential fraudulent healthcare claims based on provider and claim information.
 Please fill out the details below to get started.
 """)
-# Add a relevant title image
 # Add a relevant title image using HTML for full-width display
 st.markdown(
     """
@@ -28,10 +27,9 @@ st.markdown(
 
 st.markdown(
     """
-    <img src="img src="https://i.ibb.co/Xj3ryjM/Untitled-design.jpg" class="title-image">
+    <a href="https://imgbb.com/"><img src="https://i.ibb.co/Xj3ryjM/Untitled-design.jpg" alt="Untitled-design" border="0"></a>
     """,
     unsafe_allow_html=True
-)
 
 @st.cache_data
 def preprocess_data(df):
