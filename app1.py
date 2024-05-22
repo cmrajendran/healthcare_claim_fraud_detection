@@ -8,7 +8,7 @@ from sklearn.ensemble import IsolationForest
 
 
 # Set the app title and description
-st.set_page_config(page_title='Health Claim Fraud Predictor', page_icon="Untitled design.jpg", layout="centered")
+st.set_page_config(page_title='Health Claim Fraud Predictor', page_icon="healthcare.jpg", layout="centered")
 st.title('Health Claim Fraud Predictor')
 st.markdown("""
 Welcome to the Health Claim Fraud Predictor! This tool helps in identifying potential fraudulent healthcare claims based on provider and claim information.
