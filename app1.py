@@ -5,8 +5,13 @@ from sklearn.impute import SimpleImputer
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import IsolationForest
-
+# Set the app title and description
+st.set_page_config(page_title='Health Claim Fraud Predictor', page_icon=":hospital:", layout="centered")
 st.title('Health Claim Fraud Predictor')
+st.markdown("""
+Welcome to the Health Claim Fraud Predictor! This tool helps in identifying potential fraudulent healthcare claims based on provider and claim information.
+Please fill out the details below to get started.
+""")
 
 @st.cache_data
 def preprocess_data(df):
