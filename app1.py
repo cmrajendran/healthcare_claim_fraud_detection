@@ -77,7 +77,7 @@ def main():
     # Load the data
     df = load_data()
 
-     st.sidebar.header("Provider Information")
+    st.sidebar.header("Provider Information")
 
     # Input variables
     credentials = st.sidebar.text_input("Credentials of the Provider", help="Enter the credentials of the provider (e.g., MD, DO).")
