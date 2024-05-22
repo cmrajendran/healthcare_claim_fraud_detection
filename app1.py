@@ -79,24 +79,24 @@ def main():
 
     st.sidebar.header("Provider Information")
 
-    # Input variables
     credentials = st.sidebar.text_input("Credentials of the Provider", help="Enter the credentials of the provider (e.g., MD, DO).")
-    gender = st.selectbox("Gender of the Provider", df['Gender of the Provider'].unique())
-    entity_type_provider = st.selectbox("Entity Type of the Provider", df['Entity Type of the Provider'].unique())
-    state_code_provider = st.selectbox("State Code of the Provider", df['State Code of the Provider'].unique())
-    provider_type = st.selectbox("Provider Type", df['Provider Type'].unique())
-    medicare_participation_indicator = st.selectbox("Medicare Participation Indicator", df['Medicare Participation Indicator'].unique())
-    place_of_service = st.selectbox("Place of Service", df['Place of Service'].unique())
-    hcpcs_drug_indicator = st.selectbox("HCPCS Drug Indicator", df['HCPCS Drug Indicator'].unique())
+    gender = st.sidebar.selectbox("Gender of the Provider", df['Gender of the Provider'].unique(), help="Select the gender of the provider.")
+    entity_type_provider = st.sidebar.selectbox("Entity Type of the Provider", df['Entity Type of the Provider'].unique(), help="Select the entity type of the provider.")
+    state_code_provider = st.sidebar.selectbox("State Code of the Provider", df['State Code of the Provider'].unique(), help="Select the state code of the provider.")
+    provider_type = st.sidebar.selectbox("Provider Type", df['Provider Type'].unique(), help="Select the type of provider.")
+    medicare_participation_indicator = st.sidebar.selectbox("Medicare Participation Indicator", df['Medicare Participation Indicator'].unique(), help="Select the Medicare participation indicator.")
+    place_of_service = st.sidebar.selectbox("Place of Service", df['Place of Service'].unique(), help="Select the place of service.")
+    hcpcs_drug_indicator = st.sidebar.selectbox("HCPCS Drug Indicator", df['HCPCS Drug Indicator'].unique(), help="Select the HCPCS drug indicator.")
 
-    # Numeric input variables
-    number_of_services = st.number_input("Number of Services", min_value=0.0)
-    number_of_medicare_beneficiaries = st.number_input("Number of Medicare Beneficiaries", min_value=0)
-    number_of_distinct_medicare_beneficiary_per_day_services = st.number_input("Number of Distinct Medicare Beneficiary/Per Day Services", min_value=0)
-    average_medicare_allowed_amount = st.number_input("Average Medicare Allowed Amount", min_value=0.0)
-    average_submitted_charge_amount = st.number_input("Average Submitted Charge Amount", min_value=0.0)
-    average_medicare_payment_amount = st.number_input("Average Medicare Payment Amount", min_value=0.0)
-    average_medicare_standardized_amount = st.number_input("Average Medicare Standardized Amount", min_value=0.0)
+    st.sidebar.header("Claim Information")
+
+    number_of_services = st.sidebar.number_input("Number of Services", min_value=0.0, help="Enter the number of services provided.")
+    number_of_medicare_beneficiaries = st.sidebar.number_input("Number of Medicare Beneficiaries", min_value=0, help="Enter the number of Medicare beneficiaries.")
+    number_of_distinct_medicare_beneficiary_per_day_services = st.sidebar.number_input("Number of Distinct Medicare Beneficiary/Per Day Services", min_value=0, help="Enter the number of distinct Medicare beneficiary per day services.")
+    average_medicare_allowed_amount = st.sidebar.number_input("Average Medicare Allowed Amount", min_value=0.0, help="Enter the average Medicare allowed amount.")
+    average_submitted_charge_amount = st.sidebar.number_input("Average Submitted Charge Amount", min_value=0.0, help="Enter the average submitted charge amount.")
+    average_medicare_payment_amount = st.sidebar.number_input("Average Medicare Payment Amount", min_value=0.0, help="Enter the average Medicare payment amount.")
+    average_medicare_standardized_amount = st.sidebar.number_input("Average Medicare Standardized Amount", min_value=0.0, help="Enter the average Medicare standardized amount.")
 
     # Identify categorical columns to be encoded
     categorical_columns = df.select_dtypes(include=['object']).columns.tolist()
