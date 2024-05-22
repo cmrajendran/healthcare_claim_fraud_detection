@@ -13,7 +13,7 @@ Welcome to the Health Claim Fraud Predictor! This tool helps in identifying pote
 Please fill out the details below to get started.
 """)
 # Add a relevant title image
-st.image("https://www.canva.com/design/DAGF8xxNsYk/EYfJ1V7m5IRKO0wVuB1aFg/view?utm_content=DAGF8xxNsYk&utm_campaign=designshare&utm_medium=link&utm_source=editor", use_column_width=True)
+st.image("https://ibb.co/hLZJXLw", use_column_width=True)
 
 @st.cache_data
 def preprocess_data(df):
