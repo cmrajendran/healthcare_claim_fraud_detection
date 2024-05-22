@@ -13,7 +13,25 @@ Welcome to the Health Claim Fraud Predictor! This tool helps in identifying pote
 Please fill out the details below to get started.
 """)
 # Add a relevant title image
-st.image("https://ibb.co/hLZJXLw", use_column_width=True)
+# Add a relevant title image using HTML for full-width display
+st.markdown(
+    """
+    <style>
+    .title-image {
+        width: 100%;
+        height: auto;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+st.markdown(
+    """
+    <img src="img src="https://i.ibb.co/Xj3ryjM/Untitled-design.jpg" class="title-image">
+    """,
+    unsafe_allow_html=True
+)
 
 @st.cache_data
 def preprocess_data(df):
