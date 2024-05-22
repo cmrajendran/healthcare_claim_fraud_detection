@@ -5,6 +5,8 @@ from sklearn.impute import SimpleImputer
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import IsolationForest
+
+st.image("healthcare.jpg")
 # Set the app title and description
 st.set_page_config(page_title='Health Claim Fraud Predictor', page_icon="Untitled design.jpg", layout="centered")
 st.title('Health Claim Fraud Predictor')
