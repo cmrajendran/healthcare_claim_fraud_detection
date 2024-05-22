@@ -77,8 +77,10 @@ def main():
     # Load the data
     df = load_data()
 
+     st.sidebar.header("Provider Information")
+
     # Input variables
-    credentials = st.text_input("Credentials of the Provider")
+    credentials = st.sidebar.text_input("Credentials of the Provider", help="Enter the credentials of the provider (e.g., MD, DO).")
     gender = st.selectbox("Gender of the Provider", df['Gender of the Provider'].unique())
     entity_type_provider = st.selectbox("Entity Type of the Provider", df['Entity Type of the Provider'].unique())
     state_code_provider = st.selectbox("State Code of the Provider", df['State Code of the Provider'].unique())
