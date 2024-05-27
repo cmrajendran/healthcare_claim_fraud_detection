@@ -1,2 +1,8 @@
 # healthcare_claim_fraud_detection
 Streamlit Web App to Detect Potential Health Care Fraud
+
+According to a recent analysis by Emergen Research, the global medical fraud analysis market size reached $1.53 billion in 2021 and is expected to grow at a CAGR of 26.7% in revenue over the forecast period. Increasing consumer preference for telemedicine consultations, increasing number of patients requiring health insurance, and surging percentage of pharmacy claims and Medicare-related fraud are the major factors driving revenue growth in the market. Fraud is covert in nature, difficult to catch, and more likely to occur in the healthcare and health insurance industries.  The detection of fraud within healthcare is primarily found through manual effort by auditors or investigators searching through numerous records to find possibly suspicious or fraudulent behaviors [5]. This manual process, with massive amounts of data to sieve through, can be tedious and very inefficient compared to more automated data mining and machine learning approaches for detecting fraud [6, 7]. The volume of information within healthcare continues to increase due to technological advances allowing for the storage of high-volume information, such as in Electronic Health Records (EHR), enabling the use of "Big Data.” As technology advances and its use increases, so does the ability to perform data mining and machine learning on Big Data, which can improve the state of healthcare and medical insurance programs for patients to receive quality medical care. 
+
+This is a demonstration of deploying the model onto Streamlit Community Cloud 
+
+The code file is app1.py
